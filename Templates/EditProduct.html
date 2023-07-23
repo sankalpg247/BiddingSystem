@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Fruits</title>
+    {% load static %}
+    <link href="{%static 'bootstrap.min.css'%}" rel="stylesheet" type="text/css">
+</head>
+<body>
+{%include "Header.html"%}
+<div class="container">
+    <h1 class="text-center">Edit Product Details</h1>
+    <form action="{%url 'UpdateProduct' product.id %}" method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label class="form-label">Product Name</label>
+            <input class="form-control" name="name" type="text" value="{{product.name}}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Product Price</label>
+            <input class="form-control" name="price" type="number" value="{{product.price}}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Delivery Charges</label>
+            <input class="form-control" name="charges" type="number" value="{{product.deliveryCharges}}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Product Weight</label>
+            <input class="form-control" name="weight" type="number" value="{{product.weight}}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Enter Image Path</label>
+            <input class="form-control" name="imgPath" type="text" value="{{product.imgPath}}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Expiry Date</label>
+            <input class="form-control" name="expiry" type="date" value="{{product.expiryDate}}">
+        </div>
+
+        <div class="text-center">
+            <button class="btn btn-primary" type="submit">Update</button>
+            <a class="btn btn-secondary" href="{% url 'Home' %}">Back</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>
